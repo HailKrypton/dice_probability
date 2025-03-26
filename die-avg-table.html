@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TO DO: 
+        Learn how to use math to have effects that alter the style slightly from what the style is already set, such as darkening a color or shifting its hue, with what it's already set to as the starting point it's slightly modified from
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll Averages</title>
+    <style>
+        table {
+            max-width: 600px; /* Used in place of "width: 80%;" to allow cells to shrink naturally */
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 6px;
+            text-align: center;
+            white-space: nowrap; /* Prevents cells from stretching */
+        }
+        td {
+            box-sizing: border-box; /* Prevents cells from stretching */
+            /*border: 2px solid transparent; /* Prevents rows from stretching on hover */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .title-row {
+            background-color: #333;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .separator {
+            border-top: 3px solid black;
+        }
+        tr:hover {
+            background-color: rgba(255, 230, 150, 0.5); /* Soft golden highlight */
+            transition: background-color 0.3s ease;
+        }
+        td:hover {
+            font-weight: bold;
+            cursor: none;  
+        }
+
+        /* Probability Table Styles */
+        .probability-table {
+            display: none;
+            position: absolute;
+            left: 650px; /* Position to the right of the main table */
+            top: 0;
+            border: 1px solid black;
+            background: white;
+            padding: 10px;
+        }
+        td:hover + .probability-table {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th class="title-row" colspan="11">Dice Roll Averages</th>
+        </tr>
+        <tr>
+            <th>Dice Type</th>
+            <th>1 Die</th>
+            <th>2 Dice</th>
+            <th>3 Dice</th>
+            <th>4 Dice</th>
+            <th>5 Dice</th>
+            <th>6 Dice</th>
+            <th>7 Dice</th>
+            <th>8 Dice</th>
+            <th>9 Dice</th>
+            <th>10 Dice</th>
+        </tr>
+        <tr>
+            <th>d4</th>
+            <td>2.5</td><td>5.0</td><td>7.5</td><td>10.0</td><td>12.5</td><td>15.0</td><td>17.5</td><td>20.0</td><td>22.5</td><td>25.0</td>
+        </tr>
+        <tr>
+            <th>d6</th>
+            <td>3.5</td><td>7.0</td><td onmouseover="showTable('prob-3d6')" onmouseout="hideTable()">10.5</td><td>14.0</td><td>17.5</td><td>21.0</td><td>24.5</td><td>28.0</td><td>31.5</td><td>35.0</td>
+        </tr>
+        <tr>
+            <th>d8</th>
+            <td>4.5</td><td>9.0</td><td>13.5</td><td>18.0</td><td>22.5</td><td>27.0</td><td>31.5</td><td>36.0</td><td>40.5</td><td>45.0</td>
+        </tr>
+        <tr>
+            <th>d10</th>
+            <td>5.5</td><td>11.0</td><td>16.5</td><td>22.0</td><td>27.5</td><td>33.0</td><td>38.5</td><td>44.0</td><td>49.5</td><td>55.0</td>
+        </tr>
+        <tr>
+            <th>d12</th>
+            <td>6.5</td><td>13.0</td><td>19.5</td><td>26.0</td><td>32.5</td><td>39.0</td><td>45.5</td><td>52.0</td><td>58.5</td><td>65.0</td>
+        </tr>
+        <tr class="separator">
+            <th>d20</th>
+            <td>10.5</td><td>21.0</td><td>31.5</td><td>42.0</td><td>52.5</td><td>63.0</td><td>73.5</td><td>84.0</td><td>94.5</td><td>105.0</td>
+        </tr>
+        <tr>
+            <th>d%</th>
+            <td>50.5</td><td>101.0</td><td>151.5</td><td>202.0</td><td>252.5</td><td>303.0</td><td>353.5</td><td>404.0</td><td>454.5</td><td>505.0</td>
+        </tr>
+    </table>
+
+    <!-- Hidden Probability Tables -->
+    <div id="prob-3d6" class="probability-table">
+        <strong>Probability Table for 3d6</strong>
+        <table>
+            <tr><th>Roll</th><th>Chance</th></tr>
+            <tr><td>3</td><td>0.46%</td></tr>
+            <tr><td>4</td><td>1.39%</td></tr>
+            <tr><td>5</td><td>2.78%</td></tr>
+            <tr><td>6</td><td>4.63%</td></tr>
+            <tr><td>7</td><td>6.94%</td></tr>
+            <tr><td>8</td><td>9.72%</td></tr>
+            <tr><td>9</td><td>11.57%</td></tr>
+            <tr><td>10</td><td>12.50%</td></tr>
+            <tr><td>11</td><td>12.50%</td></tr>
+            <tr><td>12</td><td>11.57%</td></tr>
+            <tr><td>13</td><td>9.72%</td></tr>
+            <tr><td>14</td><td>6.94%</td></tr>
+            <tr><td>15</td><td>4.63%</td></tr>
+            <tr><td>16</td><td>2.78%</td></tr>
+            <tr><td>17</td><td>1.39%</td></tr>
+            <tr><td>18</td><td>0.46%</td></tr>
+        </table>
+    </div>
+
+    <script>
+        function showTable(id) {
+            document.getElementById(id).style.display = "block";
+        }
+        function hideTable() {
+            document.querySelectorAll('.probability-table').forEach(table => {
+                table.style.display = "none";
+            });
+        }
+    </script>
+
+</body>
+</html>
