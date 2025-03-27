@@ -1,4 +1,5 @@
 from collections import defaultdict
+import pyperclip # type: ignore
 
 def dice_probability(dice_count, dice_sides):
     """Compute probability distribution for sum of 'dice_count' dice with 'dice_sides' sides."""
@@ -28,6 +29,11 @@ def main():
             probabilities = dice_probability(dice_count, dice_sides)
             html_results = "\n".join(f"<tr><td>{s}</td><td>{prob:.2f}%</td></tr>" for s, prob in probabilities.items())
             print(html_results)
+            
+            # Copy to clipboard
+            pyperclip.copy(html_results)
+            print("The results have been copied to your clipboard.")
+            
             break
         except ValueError:
             print("Please enter valid integers for the number of dice and sides.")
